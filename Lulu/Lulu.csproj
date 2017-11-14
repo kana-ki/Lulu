@@ -62,11 +62,13 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="IconHandler.cs" />
+    <Compile Include="KnownFolders.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Recorder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

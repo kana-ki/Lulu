@@ -10,7 +10,7 @@ namespace Lulu {
 
         private readonly KeyboardHotkey _keyboardHotkey;
         private readonly IconHandler _iconHandler;
-
+        private readonly Recorder _recorder;
         private static bool isRecording = false;
 
         public App() {
@@ -19,6 +19,7 @@ namespace Lulu {
             if (pingSuccessful) Environment.Exit(1);
 
             this._iconHandler = new IconHandler(this.ToggleRecording, this.Exit);
+            this._recorder = new Recorder();
             this._keyboardHotkey = this.RegisterHotkey();
 
             ipcHandler.ListenForPing(new Dictionary<byte, Action> {
@@ -44,12 +45,14 @@ namespace Lulu {
         private void StartRecording() {
             this._iconHandler.SwitchToRecordingState();
             using (var soundPlayer = new SoundPlayer(Resources.Start)) {
-                soundPlayer.Play();
+                soundPlayer.PlaySync();
             }
             isRecording = true;
+            this._recorder.StartRecording();
         }
 
         private void StopRecording() {
+            this._recorder.StopRecording();
             this._iconHandler.SwitchToIdleState();
             using (var soundPlayer = new SoundPlayer(Resources.Stop)) {
                 soundPlayer.Play();

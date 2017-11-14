@@ -56,15 +56,15 @@ namespace Lulu {
         }
 
         public void SwitchToRecordingState() {
-            this._notifyIcon.Text = "Lulu (Ctrl+Alt+L) (Pretending to record)";
+            this._notifyIcon.Text = "Lulu (Ctrl+Alt+L) (Recording)";
             this._notifyIcon.Icon = Resources.Icon_Red;
-            this._notifyIcon.ShowBalloonTip(3000, "I'm recording!", "I would start recording now but... I don't know how to yet. :(", ToolTipIcon.Info);
+            this._notifyIcon.ShowBalloonTip(3000, "I'm recording!", "I've started recording! Press Ctrl+Alt+L again to stop.", ToolTipIcon.Info);
         }
 
         public void SwitchToIdleState() {
             this._notifyIcon.Text = "Lulu (Ctrl+Alt+L)";
             this._notifyIcon.Icon = Resources.Icon_White;
-            this._notifyIcon.ShowBalloonTip(3000, "I've stopped recording!", "I would stop recording now but... I don't know how to yet. :(", ToolTipIcon.Info);
+            this._notifyIcon.ShowBalloonTip(3000, "I've stopped recording!", "I've finished recording! Press Ctrl+Alt+L again to record another.", ToolTipIcon.Info);
         }
 
         public void Show() {
